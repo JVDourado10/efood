@@ -12,9 +12,9 @@ export const HeaderStyle = styled.header<Props>`
   
   > div {
     display: flex;
-    justify-content: ${(props) => props.teste ? 'space-between' : 'center'};
+    justify-content: ${(props) => props.isHome ? 'space-between' : 'center'};
     align-items: center;
-    flex-direction: ${(props) => props.teste ? 'line' : 'column'};
+    flex-direction: ${(props) => props.isHome ? 'line' : 'column'};
 
     h1 {
       font-weight: 900;

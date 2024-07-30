@@ -25,4 +25,5 @@ export const GlobalCss = createGlobalStyle`
     max-width: 1024px;
     margin: 0 auto;
   }
+
 `;
