@@ -7,17 +7,17 @@ export type Props = {
 }
 
 const Header = ({ isHome = false }: Props) => {
-  const location = useLocation()
-  location.pathname === '/restaurante' ? isHome = true : isHome = false;
+  const {pathname} = useLocation()
+  isHome = pathname.includes('/restaurante')
 
   return (
     <HeaderStyle isHome={isHome}>
       <div className="container">
-        {isHome ? <h2>Restaurantes</h2>: ''}
+        {isHome ? <h2 className="esquerda">Restaurantes</h2>: ''}
         <Link to='/'>
           <img src={logo} alt="logo" />
         </Link>
-        {isHome ? <h2>0 produto(s) no carrinho</h2> : ''}
+        {isHome ? <h2 className="direita">0 produto(s) no carrinho</h2> : ''}
         {isHome ? '' : <h1>Viva experiências gastronômicas no conforto da sua casa</h1>}
       </div>
     </HeaderStyle>

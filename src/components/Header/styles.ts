@@ -12,9 +12,20 @@ export const HeaderStyle = styled.header<Props>`
   
   > div {
     display: flex;
-    justify-content: ${(props) => props.isHome ? 'space-between' : 'center'};
+    justify-content: center;
     align-items: center;
     flex-direction: ${(props) => props.isHome ? 'line' : 'column'};
+    position: relative;
+
+    .esquerda {
+      position: absolute;
+      left: 0;
+    }
+
+    .direita {
+      position: absolute;
+      right: 0;
+    }
 
     h1 {
       font-weight: 900;
