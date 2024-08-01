@@ -3,7 +3,7 @@ import { RCardStyle, Infos, CardTitle, Description, ButtonLink, Tags, Tag } from
 
 import Restaurant from '../../models/Restaurant'
 
-const RestaurantCard = ({description, image, rate, title, id, tags }: Restaurant) => {
+const RestaurantCard = ({description, image, rate, title, id, tags }: Omit<Restaurant, 'items'>) => {
   return (
     <RCardStyle>
       <img src={image} />
