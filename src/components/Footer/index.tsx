@@ -9,7 +9,7 @@ import { FooterStyle, SocialMedias } from './styles'
 const Footer = () => {
   return (
     <FooterStyle>
-      <Link to='/restaurante'><img src={logo} alt="" /></Link>
+      <Link to='/'><img src={logo} alt="" /></Link>
       <SocialMedias>
         <li><a href="https://www.instagram.com" target='_blank'><img src={instagram} alt="" /></a></li>
         <li><a href="https://www.facebook.com" target='_blank'><img src={facebook} alt="" /></a></li>
