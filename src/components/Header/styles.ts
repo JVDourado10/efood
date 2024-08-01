@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { cores } from "../../styles";
 import { Props } from ".";
 import detail from '../../assets/detail.svg'
+import { Link } from "react-router-dom";
 
 
 
@@ -39,4 +40,10 @@ export const HeaderStyle = styled.header<Props>`
     }
 
   }
+`
+
+export const HeaderLink = styled(Link)`
+  font-size: 18px;
+  font-weight: 900;
+  color: ${cores.main};
 `
