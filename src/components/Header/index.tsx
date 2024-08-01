@@ -13,7 +13,7 @@ const Header = ({ isHome = false }: Props) => {
   return (
     <HeaderStyle isHome={isHome}>
       <div className="container">
-        {isHome ? <h2 className="esquerda">Restaurantes</h2>: ''}
+        {isHome ? <Link to='/' className="esquerda">Restaurantes</Link>: ''}
         <Link to='/'>
           <img src={logo} alt="logo" />
         </Link>
