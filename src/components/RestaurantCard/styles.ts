@@ -12,6 +12,13 @@ export const RCardStyle = styled.div`
   position: relative;
 `
 
+export const Capa = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+
+
 export const Tags = styled.div`
   display: flex;
   gap: 8px;

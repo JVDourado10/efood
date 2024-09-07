@@ -1,23 +1,24 @@
-import Restaurant from "../../models/Restaurant";
 import RestaurantCard from "../RestaurantCard";
 import { RestaurantsSection } from "./styles";
+
+import { RestaurantType } from "../../pages/Home";
 
 const Restaurants = ({
   restaurants,
 }: {
-  restaurants: Omit<Restaurant[], "items">;
+  restaurants: Omit<RestaurantType[], "cardapio" | 'destacado'>;
 }) => {
   return (
     <RestaurantsSection className="container">
       {restaurants.map((restaurant) => (
         <RestaurantCard
           key={restaurant.id}
-          title={restaurant.title}
-          description={restaurant.description}
-          image={restaurant.image}
-          rate={restaurant.rate}
+          titulo={restaurant.titulo}
+          descricao={restaurant.descricao}
+          capa={restaurant.capa}
+          avaliacao={restaurant.avaliacao}
           id={restaurant.id}
-          tags={restaurant.tags}
+          tipo={restaurant.tipo}
         />
       ))}
     </RestaurantsSection>

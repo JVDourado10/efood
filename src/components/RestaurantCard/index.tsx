@@ -1,27 +1,25 @@
 import Star from '../../assets/star.svg'
-import { RCardStyle, Infos, CardTitle, Description, ButtonLink, Tags, Tag } from './styles'
+import { RCardStyle, Infos, CardTitle, Description, ButtonLink, Tags, Tag, Capa } from './styles'
 
-import Restaurant from '../../models/Restaurant'
+import { RestaurantType } from '../../pages/Home'
 
-const RestaurantCard = ({description, image, rate, title, id, tags }: Omit<Restaurant, 'items'>) => {
+const RestaurantCard = ({id, avaliacao, capa, descricao, tipo, titulo }: Omit<RestaurantType, 'cardapio' | 'destacado'>) => {
   return (
     <RCardStyle>
-      <img src={image} />
+      <Capa src={capa} />
       <Infos>
         <div>
-          <CardTitle>{title} </CardTitle>
+          <CardTitle>{titulo} </CardTitle>
           <div>
-            <CardTitle>{rate}</CardTitle>
+            <CardTitle>{avaliacao}</CardTitle>
             <img src={Star} />
           </div>
         </div>
-        <Description>{description}</Description>
+        <Description>{descricao}</Description>
         <ButtonLink to={`/restaurante/${id}`}>Saiba Mais</ButtonLink>
       </Infos>
       <Tags>
-        {tags.map((tag) => (
-          <Tag>{tag}</Tag>
-        ))}
+          <Tag>{tipo}</Tag>
       </Tags>
     </RCardStyle>
   )
