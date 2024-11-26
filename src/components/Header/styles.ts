@@ -37,6 +37,7 @@ export const HeaderStyle = styled.header<Props>`
     h2 {
       font-size: 18px;
       font-weight: 900;
+      cursor: pointer;
     }
 
   }

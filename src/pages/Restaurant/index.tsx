@@ -1,21 +1,17 @@
 import { useParams } from "react-router-dom"
 
-// import { restaurants } from "../Home"
 import ItemCard from "../../components/ItemCard"
 import { Banner, BannerBackground, Container, Tag, Title } from "./styles"
-import { RestaurantType } from "../Home";
+import { useGetItemQuery } from "../../services/api";
 
 
 
 
-const Restaurant = ({restaurants}: {restaurants: RestaurantType[]}) => {
+const Restaurant = () => {
   const {id} = useParams()
   
-  if (id) {
-   const idNumber = +id - 1
-   if(typeof idNumber === 'number') {
-     const show = restaurants[idNumber]
-     
+  const { data: show } = useGetItemQuery(id!)
+  if (show) {
      return (
         <>
           <BannerBackground image={show.capa}>
@@ -29,12 +25,11 @@ const Restaurant = ({restaurants}: {restaurants: RestaurantType[]}) => {
         
           <Container className="container">
             {show.cardapio.map(item => (
-              <ItemCard nome={item.nome} descricao={item.descricao} foto={item.foto} porcao={item.porcao} preco={item.preco} />
+              <ItemCard item={item} />
             ))}
           </Container>
         </>
      )
-   }
   }
 }
 

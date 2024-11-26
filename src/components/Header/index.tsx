@@ -2,6 +2,10 @@ import { HeaderLink, HeaderStyle } from "./styles";
 import logo from "../../assets/logo.svg";
 import { useLocation, Link } from "react-router-dom";
 
+import { open } from "../../store/reducers/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer } from "../../store";
+
 export type Props = {
   isHome?: boolean;
 };
@@ -9,6 +13,14 @@ export type Props = {
 const Header = ({ isHome = false }: Props) => {
   const { pathname } = useLocation();
   isHome = pathname.includes("/restaurante");
+
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const dispatch = useDispatch()
+
+  const openCart = () => {
+    dispatch(open())
+  }
 
   return (
     <HeaderStyle isHome={isHome}>
@@ -23,7 +35,7 @@ const Header = ({ isHome = false }: Props) => {
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        {isHome ? <h2 className="direita">0 produto(s) no carrinho</h2> : ""}
+        {isHome ? (<h2 onClick={openCart} className="direita"> {items.length} produto(s) no carrinho</h2>) : ""}
         {isHome ? (
           ""
         ) : (

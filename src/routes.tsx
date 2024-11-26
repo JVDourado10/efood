@@ -1,24 +1,21 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home, { RestaurantType } from "./pages/Home";
+import Home from "./pages/Home";
 import Restaurant from "./pages/Restaurant";
-import { useEffect, useState } from "react";
+
+import { useGetRestaurantsQuery } from "./services/api";
 
 const Rotas = () => {
-  const [restaurants, setRestaurants] = useState<RestaurantType[]>([]);
+  const { data: restaurants, isLoading } = useGetRestaurantsQuery()
 
-  useEffect(() => {
-    fetch("https://fake-api-tau.vercel.app/api/efood/restaurantes")
-      .then((res) => res.json())
-      .then((res) => setRestaurants(res));
-  }, []);
+  if(!restaurants || isLoading) return (<p>Carregando...</p>)
 
   return (
     <Routes>
       <Route path="/" element={<Home restaurants={restaurants} />} />
       <Route
         path="/restaurante/:id"
-        element={<Restaurant restaurants={restaurants} />}
+        element={<Restaurant />}
       />
     </Routes>
   );
