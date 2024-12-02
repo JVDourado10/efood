@@ -27,4 +27,24 @@ export const GlobalCss = createGlobalStyle`
     margin: 0 auto;
   }
 
+  .column-12 {
+    grid-column: 1/2 !important;
+    max-width: 167px !important;
+  }
+
+  .column-34 {
+    grid-column: 2/5 !important;
+    max-width: 167px !important;
+  }
+
+  .column-13 {
+    grid-column: 1/4 !important;
+    max-width: 240px !important;
+  }
+
+  .column-4 {
+    grid-column: 4 !important;
+    max-width: 100px !important;
+  }
+
 `;

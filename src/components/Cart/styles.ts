@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
 `
 
-export const CartContainer = styled.div`
+export const CartContainer = styled.form`
   position: fixed;
   top: 0;
   left: 0;
@@ -29,13 +29,62 @@ export const CartContainer = styled.div`
 
 export const Sidebar = styled.aside`
   background-color: ${cores.main};
-  width: 360px;
+  width: 380px;
   z-index: 1;
   color: ${cores.main};
   padding: 32px 8px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+`
+
+export const Entrega = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px 30px;
+
+  h3 {
+    color: ${cores.background};
+    font-size: 16px;
+    line-height: 18.75px;
+  }
+
+  * {
+    grid-column: 1/-1;
+    max-width: 364px;
+  }
+
+  p {
+    color: ${cores.background};
+    margin-bottom: 24px;
+  }
+`
+
+export const Botoes = styled.div`
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+`
+
+export const OverlayCarrinho = styled.div`
+  display: grid;
+  height: 100%;
+
+  p {
+    color: ${cores.background};
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    font-weight: bold;
+  }
+
+  img {
+    position: absolute;
+    justify-self: center;
+    top: 35%;
+    opacity: 50%;
+    width: 100px;
+  }
 `
 
 export const DivTotal = styled.div`
