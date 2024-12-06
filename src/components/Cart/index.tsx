@@ -63,8 +63,8 @@ const Cart = () => {
   const compraConluida = () => {
     setCarrinhoEstado("pedido");
     dispatch(clear());
-    dispatch(close())
-  }
+    dispatch(close());
+  };
 
   const form = useFormik<FormValues>({
     initialValues: {
@@ -138,7 +138,23 @@ const Cart = () => {
       });
     },
   });
-  
+
+  const segueParaPagamento = () => {
+    if (
+      !form.errors.fullName &&
+      !form.errors.address &&
+      !form.errors.city &&
+      !form.errors.cep &&
+      !form.errors.number
+    ) {
+      setCarrinhoEstado("pagamento");
+    } else {
+      alert(
+        "Complete as informações obrigatórias antes de seguir com o pedido"
+      );
+    }
+  };
+
   return (
     <CartContainer
       onSubmit={(e) => {
@@ -155,7 +171,7 @@ const Cart = () => {
               {items.map((item) => (
                 <Item key={item.id}>
                   <Imagem src={item.foto} />
-                  <div >
+                  <div>
                     <h3>{item.nome}</h3>
                     <p>R$ {getPreco(item.preco)}</p>
                   </div>
@@ -223,7 +239,7 @@ const Cart = () => {
                 title="Complemento (Opcional)"
               />
               <Botoes>
-                <Button onClick={() => setCarrinhoEstado("pagamento")}>
+                <Button onClick={segueParaPagamento}>
                   Continuar com o pagamento
                 </Button>
                 <Button onClick={() => setCarrinhoEstado("pedido")}>
@@ -272,34 +288,41 @@ const Cart = () => {
                 title="Ano de vencimento"
               />
               <Botoes>
-                <Button type="submit">
-                  Finalizar pagamento
-                </Button>
+                <Button type="submit">Finalizar pagamento</Button>
                 <Button onClick={() => setCarrinhoEstado("entrega")}>
                   Voltar para edição de endereço
                 </Button>
               </Botoes>
             </Entrega>
           </>
-        ) : ''}
+        ) : (
+          ""
+        )}
         {isSuccess && data ? (
           <>
             <Entrega>
               <h3>Pedido realizado - {data.orderId}</h3>
               <p>
                 Estamos felizes em informar que seu pedido já está em processo
-                de preparação e, em breve, será entregue no endereço fornecido. <br /><br />
+                de preparação e, em breve, será entregue no endereço fornecido.{" "}
+                <br />
+                <br />
                 Gostaríamos de ressaltar que nossos entregadores não estão
-                autorizados a realizar cobranças extras. <br /><br />Lembre-se da
-                importância de higienizar as mãos após o recebimento do pedido,
-                garantindo assim sua segurança e bem-estar durante a refeição. <br /><br />
+                autorizados a realizar cobranças extras. <br />
+                <br />
+                Lembre-se da importância de higienizar as mãos após o
+                recebimento do pedido, garantindo assim sua segurança e
+                bem-estar durante a refeição. <br />
+                <br />
                 Esperamos que desfrute de uma deliciosa e agradável experiência
                 gastronômica. Bom apetite!
               </p>
               <Button onClick={compraConluida}>Concluir</Button>
             </Entrega>
           </>
-        ) : ''}
+        ) : (
+          ""
+        )}
       </Sidebar>
     </CartContainer>
   );
